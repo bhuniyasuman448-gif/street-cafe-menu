@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#0e1014">
+  <title>STREET CAFE | Digital QR Menu</title>
+  <meta name="description" content="Official digital table menu for Street Cafe. Good Food. Good Coffee. Good Vibes.">
+  
+  <!-- Google Fonts: Playfair Display, Outfit, Plus Jakarta Sans, Caveat -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Outfit:wght@400;500;600;700;800;900&family=Playfair+Display:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Ambient background glow layers -->
+  <div class="ambient-glow glow-top" aria-hidden="true"></div>
+  <div class="ambient-glow glow-bottom" aria-hidden="true"></div>
+
+  <div class="site-container">
+    <!-- Header Section matching the Cafe Signboard -->
+    <header class="header">
+      <div class="signboard-frame">
+        <div class="brand-badge">
+          <span class="live-dot"></span> TABLE MENU
+        </div>
+
+        <!-- Steaming Coffee Cup Logo Mark from Signboard -->
+        <div class="brand-logo-mark" aria-hidden="true">
+          <svg class="coffee-cup-svg" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 4c0 2-2 3-2 5" class="steam steam-1" />
+            <path d="M16 3c0 2-2 3-2 5" class="steam steam-2" />
+            <path d="M20 4c0 2-2 3-2 5" class="steam steam-3" />
+            <path d="M7 12h16c0 6-3 10-8 10s-8-4-8-10z" />
+            <path d="M23 14h2a3 3 0 0 1 0 6h-2" />
+            <path d="M5 25h20" stroke-width="2" />
+          </svg>
+        </div>
+
+        <h1 class="brand-title">STREET CAFE</h1>
+        <p class="brand-signboard-sub">FRESH BITES &bull; CHILL DRINKS &bull; GOOD VIBES</p>
+        <p class="brand-tagline">“Good Food. Good Coffee. Good Vibes.”</p>
+
+        <!-- Signboard Bottom Banner -->
+        <div class="board-badge-banner">
+          <span class="quality-leaf" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/>
+              <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/>
+            </svg>
+            Quality Ingredients
+          </span>
+          <span class="board-divider">&bull;</span>
+          <span class="script-banner-text">Hot &amp; Fresh &mdash; Made in Front of You!</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- Quick Sticky Category Navigation -->
+    <nav class="category-nav" aria-label="Menu Categories">
+      <div class="nav-scroller">
+        <button class="cat-pill active" data-filter="all" id="filter-all">
+          <span>All Items</span>
+        </button>
+        <button class="cat-pill" data-filter="sandwiches" id="filter-sandwiches">
+          <span class="pill-icon">🥪</span>
+          <span>Sandwiches</span>
+          <span class="pill-badge">3</span>
+        </button>
+        <button class="cat-pill" data-filter="coffee" id="filter-coffee">
+          <span class="pill-icon">☕</span>
+          <span>Cold Coffee</span>
+          <span class="pill-badge">2</span>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Main Menu Content -->
+    <main class="menu-main" id="menu-section">
+      <div class="section-title-wrap">
+        <div class="title-left">
+          <h2 class="section-heading">OUR MENU</h2>
+          <p class="section-subheading">Crafted fresh at our street counter</p>
+        </div>
+        <div class="menu-indicator">
+          <span class="pulse-indicator"></span> ORDER AT COUNTER
+        </div>
+      </div>
+
+      <!-- Category 1: SANDWICHES -->
+      <section class="menu-category" id="sandwiches" data-category="sandwiches">
+        <div class="category-header">
+          <div class="category-title-group">
+            <span class="category-icon" aria-hidden="true">🥪</span>
+            <div class="category-text">
+              <h3 class="category-name">SANDWICHES</h3>
+              <p class="category-desc">Grilled golden crisp with authentic street flavors</p>
+            </div>
+          </div>
+          <span class="category-count">3 Items</span>
+        </div>
+
+        <div class="menu-grid">
+          <!-- Item 1: Veg Sandwich -->
+          <article class="menu-card" data-category="sandwiches">
+            <div class="card-content-wrap">
+              <div class="card-top-row">
+                <div class="dietary-wrap">
+                  <span class="diet-icon diet-veg" title="Vegetarian" aria-label="Vegetarian">
+                    <span class="diet-dot"></span>
+                  </span>
+                  <span class="diet-label veg">VEG</span>
+                </div>
+                <div class="price-pill">
+                  <span class="currency">₹</span><span class="amount">40</span>
+                </div>
+              </div>
+              <h4 class="item-name">Veg Sandwich</h4>
+              <p class="item-desc">Crispy golden toasted bread packed with fresh garden veggies, savory street seasonings &amp; signature house spread.</p>
+            </div>
+            <!-- Food Image: Replace assets/images/veg-sandwich.jpg with your real photo anytime -->
+            <div class="card-img-container">
+              <img src="assets/images/veg-sandwich.jpg" alt="Street Cafe Veg Sandwich" class="card-item-img" loading="lazy">
+            </div>
+          </article>
+
+          <!-- Item 2: Paneer Sandwich -->
+          <article class="menu-card" data-category="sandwiches">
+            <div class="card-content-wrap">
+              <div class="card-top-row">
+                <div class="dietary-wrap">
+                  <span class="diet-icon diet-veg" title="Vegetarian" aria-label="Vegetarian">
+                    <span class="diet-dot"></span>
+                  </span>
+                  <span class="diet-label veg">VEG</span>
+                </div>
+                <div class="price-pill">
+                  <span class="currency">₹</span><span class="amount">60</span>
+                </div>
+              </div>
+              <h4 class="item-name">Paneer Sandwich</h4>
+              <p class="item-desc">Tender cottage cheese cubes tossed in spicy street masala, layered with rich cheese &amp; grilled to golden crisp.</p>
+            </div>
+            <!-- Food Image: Replace assets/images/paneer-sandwich.jpg with your real photo anytime -->
+            <div class="card-img-container">
+              <img src="assets/images/paneer-sandwich.jpg" alt="Street Cafe Paneer Sandwich" class="card-item-img" loading="lazy">
+            </div>
+          </article>
+
+          <!-- Item 3: Chicken Sandwich -->
+          <article class="menu-card" data-category="sandwiches">
+            <div class="card-content-wrap">
+              <div class="card-top-row">
+                <div class="dietary-wrap">
+                  <span class="diet-icon diet-nonveg" title="Non-Vegetarian" aria-label="Non-Vegetarian">
+                    <span class="diet-dot"></span>
+                  </span>
+                  <span class="diet-label nonveg">NON-VEG</span>
+                </div>
+                <div class="price-pill">
+                  <span class="currency">₹</span><span class="amount">60</span>
+                </div>
+              </div>
+              <h4 class="item-name">Chicken Sandwich</h4>
+              <p class="item-desc">Juicy shredded chicken tossed in aromatic herbs and creamy spread, toasted fresh in crispy sliced bread.</p>
+            </div>
+            <!-- Food Image: Replace assets/images/chicken-sandwich.jpg with your real photo anytime -->
+            <div class="card-img-container">
+              <img src="assets/images/chicken-sandwich.jpg" alt="Street Cafe Chicken Sandwich" class="card-item-img" loading="lazy">
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- Category 2: COLD COFFEE -->
+      <section class="menu-category" id="coffee" data-category="coffee">
+        <div class="category-header">
+          <div class="category-title-group">
+            <span class="category-icon" aria-hidden="true">☕</span>
+            <div class="category-text">
+              <h3 class="category-name">COLD COFFEE</h3>
+              <p class="category-desc">Chilled, rich, thick &amp; frothy brewed goodness</p>
+            </div>
+          </div>
+          <span class="category-count">2 Sizes</span>
+        </div>
+
+        <div class="menu-grid coffee-grid">
+          <!-- Item 4: Cold Coffee Small -->
+          <article class="menu-card coffee-card" data-category="coffee">
+            <div class="card-content-wrap">
+              <div class="card-top-row">
+                <span class="size-badge">Small Size</span>
+                <div class="price-pill">
+                  <span class="currency">₹</span><span class="amount">40</span>
+                </div>
+              </div>
+              <h4 class="item-name">Cold Coffee — Small</h4>
+              <p class="item-desc">Classic creamy iced blended coffee topped with thick espresso foam and subtle chocolate dust. Perfectly refreshing.</p>
+            </div>
+            <!-- Food Image: Replace assets/images/cold-coffee-small.jpg with your real photo anytime -->
+            <div class="card-img-container">
+              <img src="assets/images/cold-coffee-small.jpg" alt="Street Cafe Cold Coffee Small" class="card-item-img" loading="lazy">
+            </div>
+          </article>
+
+          <!-- Item 5: Cold Coffee Large -->
+          <article class="menu-card coffee-card featured-card" data-category="coffee">
+            <div class="card-content-wrap">
+              <div class="card-top-row">
+                <div class="badge-combo">
+                  <span class="size-badge large">Large Size</span>
+                  <span class="popular-tag">Signature</span>
+                </div>
+                <div class="price-pill accent-price">
+                  <span class="currency">₹</span><span class="amount">60</span>
+                </div>
+              </div>
+              <h4 class="item-name">Cold Coffee — Large</h4>
+              <p class="item-desc">Extra thick, generous serving of whipped cold coffee blend with deep aromatic roasted espresso notes.</p>
+            </div>
+            <!-- Food Image: Replace assets/images/cold-coffee-large.jpg with your real photo anytime -->
+            <div class="card-img-container">
+              <img src="assets/images/cold-coffee-large.jpg" alt="Street Cafe Cold Coffee Large" class="card-item-img" loading="lazy">
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- Instagram Section -->
+      <section class="instagram-section" id="instagram">
+        <div class="instagram-card">
+          <div class="insta-icon-wrapper" aria-hidden="true">
+            <svg class="insta-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+            </svg>
+          </div>
+          <div class="insta-details">
+            <span class="insta-sub">Follow us on Instagram</span>
+            <h3 class="insta-handle">@streetcafebaripada</h3>
+            <p class="insta-tagline">Tag us in your stories and vibe with the community!</p>
+          </div>
+          <a href="https://www.instagram.com/streetcafebaripada/" target="_blank" rel="noopener noreferrer" class="insta-cta-btn" id="instagram-link">
+            <span>Follow on Instagram</span>
+            <svg class="arrow-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="7" y1="17" x2="17" y2="7"></line>
+              <polyline points="7 7 17 7 17 17"></polyline>
+            </svg>
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-divider"></div>
+      <div class="footer-content">
+        <h2 class="footer-brand">STREET CAFE</h2>
+        <p class="footer-signboard-sub">FRESH BITES &bull; CHILL DRINKS &bull; GOOD VIBES</p>
+        <p class="footer-tagline">“Good Food. Good Coffee. Good Vibes.”</p>
+        <p class="footer-insta">
+          Instagram: <a href="https://www.instagram.com/streetcafebaripada/" target="_blank" rel="noopener noreferrer">@streetcafebaripada</a>
+        </p>
+      </div>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

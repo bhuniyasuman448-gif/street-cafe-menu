@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 360" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#12151c"/>
+      <stop offset="50%" stop-color="#181c26"/>
+      <stop offset="100%" stop-color="#101218"/>
+    </linearGradient>
+    <radialGradient id="glow2" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#f59e0b" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#f59e0b" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="grid2" width="30" height="30" patternUnits="userSpaceOnUse">
+      <path d="M 30 0 L 0 0 0 30" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="1"/>
+    </pattern>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="360" fill="url(#bgGrad2)"/>
+  <rect width="800" height="360" fill="url(#grid2)"/>
+  <circle cx="400" cy="155" r="180" fill="url(#glow2)"/>
+
+  <!-- Border Frame -->
+  <rect x="20" y="20" width="760" height="320" rx="16" fill="none" stroke="rgba(245, 158, 11, 0.25)" stroke-width="1.5" stroke-dasharray="6 6"/>
+
+  <!-- Cold Coffee Glass Icon -->
+  <g transform="translate(400, 140) scale(1.6)" text-anchor="middle">
+    <!-- Straw -->
+    <line x1="2" y1="-32" x2="14" y2="-44" stroke="#f59e0b" stroke-width="2.5" stroke-linecap="round"/>
+    <!-- Glass Rim & Body -->
+    <path d="M-16 -18 L16 -18 L11 26 L-11 26 Z" fill="none" stroke="#f8f6f0" stroke-width="2" stroke-linejoin="round"/>
+    <!-- Coffee Liquid Line -->
+    <path d="M-14 -6 Q 0 -3 14 -6 L10 24 L-10 24 Z" fill="rgba(245, 158, 11, 0.25)"/>
+    <!-- Froth & Ice Cubes -->
+    <ellipse cx="0" cy="-6" rx="14" ry="4" fill="rgba(254, 240, 138, 0.4)"/>
+    <rect x="-6" y="2" width="6" height="6" rx="1.5" fill="none" stroke="#fef08a" stroke-width="1.2"/>
+    <rect x="2" y="8" width="5" height="5" rx="1.5" fill="none" stroke="#fef08a" stroke-width="1.2"/>
+  </g>
+
+  <!-- Labels -->
+  <text x="400" y="225" fill="#f8f6f0" font-family="'Outfit', sans-serif" font-size="20" font-weight="700" letter-spacing="3" text-anchor="middle">
+    COLD COFFEE &bull; PHOTO SPOT
+  </text>
+  <text x="400" y="255" fill="#94a3b8" font-family="'Plus Jakarta Sans', sans-serif" font-size="14" font-weight="500" letter-spacing="1" text-anchor="middle">
+    Replace with your authentic Street Cafe cold coffee photo
+  </text>
+  <g transform="translate(400, 288)">
+    <rect x="-100" y="-12" width="200" height="24" rx="12" fill="rgba(245, 158, 11, 0.12)" stroke="rgba(245, 158, 11, 0.3)" stroke-width="1"/>
+    <text x="0" y="4" fill="#f59e0b" font-family="'Outfit', sans-serif" font-size="11" font-weight="700" letter-spacing="1.5" text-anchor="middle">
+      READY FOR REAL PHOTO
+    </text>
+  </g>
+</svg>

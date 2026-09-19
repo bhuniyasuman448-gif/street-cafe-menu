@@ -1,0 +1,922 @@
+/* ==========================================================================
+   STREET CAFE — Digital QR Menu Stylesheet
+   Aesthetic: Modern Urban Street Cafe (Dark Charcoal, Warm Amber, Backlit Glow)
+   ========================================================================== */
+
+:root {
+  /* Color Palette */
+  --bg-main: #0c0e12;
+  --bg-card: #151821;
+  --bg-card-hover: #1b1f2b;
+  --bg-nav: rgba(13, 16, 22, 0.88);
+  
+  --text-primary: #f8f6f0;       /* Warm Cream */
+  --text-secondary: #9aa3b2;     /* Muted Slate */
+  --text-muted: #64748b;         /* Subtle Hint */
+  
+  --accent-amber: #f59e0b;       /* Signature Street Amber */
+  --accent-amber-light: #fbbf24;
+  --accent-amber-glow: rgba(245, 158, 11, 0.16);
+  --accent-orange: #ea580c;      /* Street Terracotta */
+  --coffee-warm: #382417;        /* Espresso Warmth */
+  
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-amber: rgba(245, 158, 11, 0.32);
+  --border-active: rgba(245, 158, 11, 0.55);
+  
+  /* Indian Food Standard Colors */
+  --veg-green: #22c55e;
+  --nonveg-red: #ef4444;
+
+  /* Typography */
+  --font-display: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-serif: 'Playfair Display', Georgia, serif;
+  --font-script: 'Caveat', cursive, sans-serif;
+
+  /* Layout & Transitions */
+  --max-w: 620px;
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --transition-fast: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-smooth: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Reset & Box Sizing */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--bg-main);
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--bg-main);
+  color: var(--text-primary);
+  line-height: 1.55;
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+  padding: 0 14px 44px;
+}
+
+/* Ambient Backlit Signboard Glow */
+.ambient-glow {
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(130px);
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.5;
+}
+
+.glow-top {
+  top: -120px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 440px;
+  height: 440px;
+  background: radial-gradient(circle, rgba(245, 158, 11, 0.32) 0%, rgba(217, 119, 6, 0.18) 45%, rgba(56, 36, 23, 0.4) 75%, transparent 100%);
+}
+
+.glow-bottom {
+  bottom: 8%;
+  right: -60px;
+  width: 320px;
+  height: 320px;
+  background: radial-gradient(circle, rgba(234, 88, 12, 0.14) 0%, transparent 70%);
+}
+
+/* Main Container */
+.site-container {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+/* ==========================================================================
+   HEADER (Replicating the Backlit Signboard)
+   ========================================================================== */
+.header {
+  padding: 22px 0 14px;
+}
+
+.signboard-frame {
+  background: radial-gradient(circle at 50% 25%, #1c1815 0%, #12141a 75%);
+  border: 1px solid var(--border-amber);
+  border-radius: var(--radius-lg);
+  padding: 24px 16px 20px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 12px 32px -10px rgba(0, 0, 0, 0.8), 0 0 24px rgba(245, 158, 11, 0.12);
+  position: relative;
+  overflow: hidden;
+}
+
+.signboard-frame::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 20%;
+  right: 20%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(245, 158, 11, 0.6), transparent);
+}
+
+.brand-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(245, 158, 11, 0.12);
+  border: 1px solid rgba(245, 158, 11, 0.28);
+  color: var(--accent-amber);
+  font-family: var(--font-display);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  padding: 4px 11px;
+  border-radius: 999px;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.live-dot {
+  width: 6px;
+  height: 6px;
+  background-color: var(--accent-amber);
+  border-radius: 50%;
+  box-shadow: 0 0 8px var(--accent-amber);
+  animation: pulse-dot 2s infinite ease-in-out;
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.35; transform: scale(0.85); }
+}
+
+/* Steaming Coffee Cup Logo */
+.brand-logo-mark {
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  filter: drop-shadow(0 0 10px rgba(245, 158, 11, 0.4));
+}
+
+.coffee-cup-svg {
+  width: 44px;
+  height: 44px;
+  stroke: var(--accent-amber);
+}
+
+.steam {
+  animation: float-steam 2.5s infinite ease-in-out;
+}
+
+.steam-2 { animation-delay: 0.35s; }
+.steam-3 { animation-delay: 0.7s; }
+
+@keyframes float-steam {
+  0%, 100% { transform: translateY(0); opacity: 0.85; }
+  50% { transform: translateY(-3px); opacity: 0.3; }
+}
+
+/* Signboard Title */
+.brand-title {
+  font-family: var(--font-serif);
+  font-size: clamp(2rem, 6.8vw, 3rem);
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  color: #fffdf8;
+  line-height: 1.1;
+  margin-bottom: 6px;
+  text-transform: uppercase;
+  text-shadow: 0 0 20px rgba(245, 158, 11, 0.38), 0 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+/* Signboard Subtitle */
+.brand-signboard-sub {
+  font-family: var(--font-display);
+  font-size: clamp(0.7rem, 2.3vw, 0.82rem);
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  color: #d8d0c5;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+  opacity: 0.95;
+}
+
+.brand-tagline {
+  font-family: var(--font-display);
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--accent-amber);
+  letter-spacing: 0.03em;
+  margin-bottom: 12px;
+}
+
+/* Signboard Banner: Hot & Fresh */
+.board-badge-banner {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(245, 158, 11, 0.22);
+  border-radius: 999px;
+  padding: 5px 14px;
+}
+
+.quality-leaf {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  color: var(--veg-green);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.board-divider {
+  color: rgba(255, 255, 255, 0.25);
+  font-size: 0.75rem;
+}
+
+.script-banner-text {
+  font-family: var(--font-script);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #fef08a;
+  letter-spacing: 0.02em;
+  line-height: 1;
+}
+
+/* ==========================================================================
+   CATEGORY NAVIGATION (Sticky Mobile Pill Bar)
+   ========================================================================== */
+.category-nav {
+  position: sticky;
+  top: 10px;
+  z-index: 50;
+  margin: 12px 0 20px;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  background: var(--bg-nav);
+  border: 1px solid var(--border-subtle);
+  border-radius: 999px;
+  padding: 5px 6px;
+  box-shadow: 0 10px 24px -6px rgba(0, 0, 0, 0.65);
+}
+
+.nav-scroller {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.nav-scroller::-webkit-scrollbar {
+  display: none;
+}
+
+.cat-pill {
+  flex: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  background: transparent;
+  border: none;
+  color: var(--text-secondary);
+  font-family: var(--font-display);
+  font-size: 0.86rem;
+  font-weight: 600;
+  padding: 8px 12px;
+  border-radius: 999px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: var(--transition-fast);
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.cat-pill:active {
+  transform: scale(0.96);
+}
+
+.cat-pill .pill-icon {
+  font-size: 0.95rem;
+}
+
+.cat-pill .pill-badge {
+  font-size: 0.72rem;
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--text-primary);
+  padding: 1px 6px;
+  border-radius: 999px;
+  font-weight: 700;
+}
+
+.cat-pill:hover {
+  color: var(--text-primary);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.cat-pill.active {
+  background: var(--accent-amber);
+  color: #0c0e12;
+  font-weight: 700;
+  box-shadow: 0 4px 14px rgba(245, 158, 11, 0.38);
+}
+
+.cat-pill.active .pill-badge {
+  background: rgba(0, 0, 0, 0.25);
+  color: #0c0e12;
+}
+
+/* ==========================================================================
+   MAIN MENU
+   ========================================================================== */
+.menu-main {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.section-title-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2px 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.section-heading {
+  font-family: var(--font-display);
+  font-size: 1.45rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  color: var(--text-primary);
+  text-transform: uppercase;
+}
+
+.section-subheading {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
+
+.menu-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-display);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--accent-amber);
+  background: rgba(245, 158, 11, 0.08);
+  border: 1px solid rgba(245, 158, 11, 0.2);
+  padding: 4px 10px;
+  border-radius: 999px;
+}
+
+.pulse-indicator {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent-amber);
+}
+
+/* Category Sections */
+.menu-category {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  scroll-margin-top: 75px;
+}
+
+.category-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2px;
+}
+
+.category-title-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.category-icon {
+  font-size: 1.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.035);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+}
+
+.category-name {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-weight: 800;
+  letter-spacing: 0.03em;
+  color: var(--text-primary);
+  line-height: 1.2;
+}
+
+.category-desc {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+.category-count {
+  font-family: var(--font-display);
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--accent-amber);
+  background: rgba(245, 158, 11, 0.1);
+  padding: 3px 9px;
+  border-radius: 999px;
+  border: 1px solid rgba(245, 158, 11, 0.22);
+}
+
+/* Category Visual Area (Photo Frame) */
+.category-visual {
+  width: 100%;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  border: 1px solid var(--border-subtle);
+  box-shadow: 0 8px 20px -8px rgba(0, 0, 0, 0.5);
+  background: #11141b;
+  position: relative;
+}
+
+.category-banner-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+/* ==========================================================================
+   TACTILE MENU CARDS WITH FOOD IMAGES
+   ========================================================================== */
+.menu-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.menu-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 14px 14px 14px 16px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  position: relative;
+  transition: var(--transition-fast);
+  -webkit-tap-highlight-color: transparent;
+  overflow: hidden;
+}
+
+.menu-card:hover, .menu-card.touch-active {
+  background: var(--bg-card-hover);
+  border-color: var(--border-active);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px -6px rgba(0, 0, 0, 0.65), 0 0 14px var(--accent-amber-glow);
+}
+
+.card-content-wrap {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.card-top-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 2px;
+}
+
+.item-name {
+  font-family: var(--font-display);
+  font-size: 1.08rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.01em;
+  line-height: 1.25;
+}
+
+/* Dietary Indicators */
+.dietary-wrap {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.diet-icon {
+  width: 15px;
+  height: 15px;
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.diet-icon.diet-veg {
+  border: 1.8px solid var(--veg-green);
+}
+
+.diet-icon.diet-veg .diet-dot {
+  width: 6.5px;
+  height: 6.5px;
+  background: var(--veg-green);
+  border-radius: 50%;
+}
+
+.diet-icon.diet-nonveg {
+  border: 1.8px solid var(--nonveg-red);
+}
+
+.diet-icon.diet-nonveg .diet-dot {
+  width: 6.5px;
+  height: 6.5px;
+  background: var(--nonveg-red);
+  border-radius: 50%;
+}
+
+.diet-label {
+  font-family: var(--font-display);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.diet-label.veg { color: var(--veg-green); }
+.diet-label.nonveg { color: var(--nonveg-red); }
+
+/* Size Badges for Coffee */
+.badge-combo {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  flex-shrink: 0;
+}
+
+.size-badge {
+  font-family: var(--font-display);
+  font-size: 0.7rem;
+  font-weight: 700;
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text-primary);
+  padding: 3px 8px;
+  border-radius: 5px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  flex-shrink: 0;
+}
+
+.size-badge.large {
+  background: rgba(245, 158, 11, 0.15);
+  color: var(--accent-amber);
+  border-color: rgba(245, 158, 11, 0.35);
+}
+
+.popular-tag {
+  font-family: var(--font-display);
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: #ea580c;
+  background: rgba(234, 88, 12, 0.12);
+  border: 1px solid rgba(234, 88, 12, 0.28);
+  padding: 2px 7px;
+  border-radius: 999px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  flex-shrink: 0;
+}
+
+/* Prominent Price Pill */
+.price-pill {
+  display: inline-flex;
+  align-items: baseline;
+  background: rgba(245, 158, 11, 0.12);
+  border: 1px solid rgba(245, 158, 11, 0.32);
+  padding: 3px 10px;
+  border-radius: var(--radius-sm);
+  color: var(--accent-amber);
+  font-family: var(--font-display);
+  font-weight: 800;
+  flex-shrink: 0;
+}
+
+.price-pill .currency {
+  font-size: 0.82rem;
+  margin-right: 2px;
+  font-weight: 700;
+}
+
+.price-pill .amount {
+  font-size: 1.25rem;
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+
+.price-pill.accent-price {
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.22) 0%, rgba(234, 88, 12, 0.22) 100%);
+  border-color: rgba(245, 158, 11, 0.45);
+  box-shadow: 0 0 12px rgba(245, 158, 11, 0.2);
+}
+
+/* Item Description (Clean 2-line clamp on mobile for neat cards) */
+.item-desc {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Food Image Thumbnail Container */
+.card-img-container {
+  width: 96px;
+  height: 96px;
+  min-width: 96px;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  position: relative;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: #191c25;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  flex-shrink: 0;
+}
+
+.card-item-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transform: scale(1.01);
+  transition: transform 0.35s ease;
+}
+
+.menu-card:hover .card-item-img, 
+.menu-card.touch-active .card-item-img {
+  transform: scale(1.08);
+}
+
+/* ==========================================================================
+   INSTAGRAM SECTION
+   ========================================================================== */
+.instagram-section {
+  margin-top: 10px;
+}
+
+.instagram-card {
+  background: linear-gradient(135deg, #181c25 0%, #1c1822 50%, #20171a 100%);
+  border: 1px solid rgba(225, 48, 108, 0.28);
+  border-radius: var(--radius-lg);
+  padding: 20px 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 12px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 10px 28px -10px rgba(0, 0, 0, 0.7);
+}
+
+.instagram-card::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 260px;
+  height: 100px;
+  background: radial-gradient(ellipse, rgba(225, 48, 108, 0.2) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.insta-icon-wrapper {
+  width: 48px;
+  height: 48px;
+  border-radius: 13px;
+  background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 16px rgba(214, 36, 159, 0.35);
+}
+
+.insta-svg {
+  width: 26px;
+  height: 26px;
+  stroke: #ffffff;
+}
+
+.insta-details {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.insta-sub {
+  font-family: var(--font-display);
+  font-size: 0.74rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #f472b6;
+}
+
+.insta-handle {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  letter-spacing: -0.01em;
+}
+
+.insta-tagline {
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  max-width: 320px;
+  margin: 0 auto;
+}
+
+.insta-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  background: #ffffff;
+  color: #0c0e12;
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-decoration: none;
+  padding: 10px 22px;
+  border-radius: 999px;
+  transition: var(--transition-fast);
+  box-shadow: 0 4px 16px rgba(255, 255, 255, 0.15);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.insta-cta-btn:hover {
+  background: #f8f6f0;
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 8px 22px rgba(255, 255, 255, 0.25);
+}
+
+.insta-cta-btn:active {
+  transform: scale(0.97);
+}
+
+.arrow-svg {
+  width: 15px;
+  height: 15px;
+}
+
+/* ==========================================================================
+   FOOTER
+   ========================================================================== */
+.footer {
+  margin-top: 42px;
+  text-align: center;
+  padding: 0 14px;
+}
+
+.footer-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.1) 50%, transparent 100%);
+  margin-bottom: 22px;
+}
+
+.footer-content {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.footer-brand {
+  font-family: var(--font-serif);
+  font-size: 1.3rem;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+  color: var(--text-primary);
+  text-transform: uppercase;
+}
+
+.footer-signboard-sub {
+  font-family: var(--font-display);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  color: #c8bfb5;
+  text-transform: uppercase;
+}
+
+.footer-tagline {
+  font-family: var(--font-display);
+  font-size: 0.86rem;
+  color: var(--accent-amber);
+  font-weight: 600;
+}
+
+.footer-insta {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-top: 4px;
+}
+
+.footer-insta a {
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.2s ease;
+}
+
+.footer-insta a:hover {
+  color: var(--accent-amber);
+  text-decoration: underline;
+}
+
+/* ==========================================================================
+   TABLET & DESKTOP ENHANCEMENTS
+   ========================================================================== */
+@media (min-width: 600px) {
+  body {
+    padding-top: 16px;
+  }
+  
+  .signboard-frame {
+    padding: 30px 24px 24px;
+  }
+
+  .menu-grid {
+    gap: 14px;
+  }
+
+  .menu-card {
+    padding: 16px 20px;
+  }
+
+  .card-img-container {
+    width: 108px;
+    height: 108px;
+    min-width: 108px;
+  }
+}
+
+@media (max-width: 360px) {
+  .card-img-container {
+    width: 82px;
+    height: 82px;
+    min-width: 82px;
+  }
+  
+  .menu-card {
+    padding: 12px;
+    gap: 10px;
+  }
+  
+  .item-name {
+    font-size: 0.98rem;
+  }
+  
+  .price-pill .amount {
+    font-size: 1.15rem;
+  }
+}
